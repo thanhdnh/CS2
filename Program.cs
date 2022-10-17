@@ -61,10 +61,27 @@ public class Program{
             System.Console.WriteLine();
         }
     }
+    static void GenerateArrayList1D(ArrayList arl){
+        Random r = new Random();
+        for(int i=0; i<10; i++)
+            arl.Add(i);
+    }
+    static int SumArrayList(ArrayList arl){
+        int sum = 0;
+        foreach(int v in arl)
+            sum += v;
+        /*for(int i=0; i<arl.Count; i++)
+            sum += (int)arl[i];*/
+        return sum;
+    }
     public static void Main(){
         Console.Clear();
-        List<List<int>> list = new List<List<int>>();
-        GenerateList2D<int>(list, 4, 3); PrintList2D<int>(list);
+        ArrayList arl = new ArrayList();
+        GenerateArrayList1D(arl);
+        System.Console.WriteLine("Tong ArrayList: " + SumArrayList(arl));
+
+        /*List<List<int>> list = new List<List<int>>();
+        GenerateList2D<int>(list, 4, 3); PrintList2D<int>(list);*/
 
         /*List<int> list = new List<int>();
         GenerateList<int>(list);
