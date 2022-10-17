@@ -41,12 +41,34 @@ public class Program{
             sum += (dynamic)list[i];
         return sum;
     }
+    static void PrintList<T>(List<T> list){
+        foreach(T v in list)
+            System.Console.Write(v + " ");
+    }
+    static void GenerateList2D<T>(List<List<T>> list, int len1, int len2){
+        Random r = new Random();
+        for(int i=0; i<len1; i++){
+            List<T> temp = new List<T>();
+            for(int j=0; j<len2; j++)
+                temp.Add((dynamic)r.Next(1, 99));
+            list.Add(temp);
+        }
+    }
+    static void PrintList2D<T>(List<List<T>> list){
+        for(int i=0; i<list.Count; i++){
+            for(int j=0; j<list[i].Count; j++)
+                System.Console.Write(list[i][j] + " ");
+            System.Console.WriteLine();
+        }
+    }
     public static void Main(){
         Console.Clear();
+        List<List<int>> list = new List<List<int>>();
+        GenerateList2D<int>(list, 4, 3); PrintList2D<int>(list);
 
-        List<int> list = new List<int>();
+        /*List<int> list = new List<int>();
         GenerateList<int>(list);
-        System.Console.WriteLine("Tong list: " + SumList<int>(list));
+        System.Console.WriteLine("Tong list: " + SumList<int>(list));*/
 
         /*int[] len = {3, 4};
         int[] low = {1, 1};
