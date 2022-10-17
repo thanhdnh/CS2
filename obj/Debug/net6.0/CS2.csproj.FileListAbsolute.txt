@@ -1,0 +1,15 @@
+/Users/hoangthanh/Documents/CS2/bin/Debug/net6.0/CS2
+/Users/hoangthanh/Documents/CS2/bin/Debug/net6.0/CS2.deps.json
+/Users/hoangthanh/Documents/CS2/bin/Debug/net6.0/CS2.runtimeconfig.json
+/Users/hoangthanh/Documents/CS2/bin/Debug/net6.0/CS2.dll
+/Users/hoangthanh/Documents/CS2/bin/Debug/net6.0/ref/CS2.dll
+/Users/hoangthanh/Documents/CS2/bin/Debug/net6.0/CS2.pdb
+/Users/hoangthanh/Documents/CS2/obj/Debug/net6.0/CS2.csproj.AssemblyReference.cache
+/Users/hoangthanh/Documents/CS2/obj/Debug/net6.0/CS2.GeneratedMSBuildEditorConfig.editorconfig
+/Users/hoangthanh/Documents/CS2/obj/Debug/net6.0/CS2.AssemblyInfoInputs.cache
+/Users/hoangthanh/Documents/CS2/obj/Debug/net6.0/CS2.AssemblyInfo.cs
+/Users/hoangthanh/Documents/CS2/obj/Debug/net6.0/CS2.csproj.CoreCompileInputs.cache
+/Users/hoangthanh/Documents/CS2/obj/Debug/net6.0/CS2.dll
+/Users/hoangthanh/Documents/CS2/obj/Debug/net6.0/ref/CS2.dll
+/Users/hoangthanh/Documents/CS2/obj/Debug/net6.0/CS2.pdb
+/Users/hoangthanh/Documents/CS2/obj/Debug/net6.0/CS2.genruntimeconfig.cache
