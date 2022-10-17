@@ -30,14 +30,29 @@ public class Program{
             System.Console.WriteLine();
         }
     }
+    static void GenerateList<T>(List<T> list){
+        Random r = new Random();
+        for(int i=0; i<10; i++)
+            list.Add((dynamic)r.Next(1, 99));
+    }
+    static T SumList<T>(List<T> list){
+        T sum = list[0];
+        for(int i=1; i<list.Count; i++)
+            sum += (dynamic)list[i];
+        return sum;
+    }
     public static void Main(){
         Console.Clear();
 
-        int[] len = {3, 4};
+        List<int> list = new List<int>();
+        GenerateList<int>(list);
+        System.Console.WriteLine("Tong list: " + SumList<int>(list));
+
+        /*int[] len = {3, 4};
         int[] low = {1, 1};
         Array arr2;
         InitArray2D(out arr2, len, low); GenerateArray2D(arr2); PrintArray2D(arr2);
-
+        */
         /*Array arr;
         InitArray1D(out arr, 5, 0);
         GenerateArray1D(arr);
