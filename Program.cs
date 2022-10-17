@@ -74,11 +74,30 @@ public class Program{
             sum += (int)arl[i];*/
         return sum;
     }
+    class Student{
+        public string id;
+        public string hoten;
+        public float dtb;
+    }
     public static void Main(){
         Console.Clear();
-        ArrayList arl = new ArrayList();
+
+        Student st1 = new Student();
+        st1.id = "SV01"; st1.hoten = "Nguyen A"; st1.dtb = 5.6f;
+        Student st2 = new Student();
+        st2.id = "SV02"; st2.hoten = "Nguyen B"; st2.dtb = 7.5f;
+        List<Student> list = new List<Student>();
+        list.Add(st1); list.Add(st2);
+        System.Console.WriteLine($"ID: {list[1].id}, Ten: {list[1].hoten}, DTB: {list[1].dtb}");
+
+        /*ArrayList arl2 = new ArrayList();
+        arl2.Add(2); arl2.Add(3.14f); arl2.Add("Hello");
+        object x = arl2[(new Random()).Next(0, 3)];
+        System.Console.WriteLine("{0}: {1}", x, x.GetType());*/
+
+        /*ArrayList arl = new ArrayList();
         GenerateArrayList1D(arl);
-        System.Console.WriteLine("Tong ArrayList: " + SumArrayList(arl));
+        System.Console.WriteLine("Tong ArrayList: " + SumArrayList(arl));*/
 
         /*List<List<int>> list = new List<List<int>>();
         GenerateList2D<int>(list, 4, 3); PrintList2D<int>(list);*/
