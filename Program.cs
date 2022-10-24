@@ -107,15 +107,49 @@ public class Program
       ms.Push((int)temp.Pop().data);
     return max;
   }
+  class Book{
+    public string id;
+    public string ten;
+    public string tacgia;
+    public int gia;
+    public Book(string id, string ten, string tacgia, int gia){
+      this.id = id;
+      this.ten = ten;
+      this.tacgia = tacgia;
+      this.gia = gia;
+    }
+    public override string ToString()
+    {
+      return $"Book[id: {id}, Ten: {ten}, Tac gia: {tacgia}, Gia: {gia}]";
+    }
+  }
+  static void PrintCurrentBook(Stack<Book> l, string id){
+
+  }
+  static void PrintNextBook(Stack<Book> l, string id){
+
+  }
   public static void Main()
   {
     Console.Clear();
 
-    MyStack ms = new MyStack();
+    Stack<Book> kesach = new Stack<Book>();
+    Book b1 = new Book("B01", "Toan A1", "Nguyen A", 25000);
+    Book b2 = new Book("B02", "Tin hoc", "Le B", 22000);
+    Book b3 = new Book("B03", "Kinh te", "Ngo C", 23000);
+    Book b4 = new Book("B04", "Khoa hoc du lieu", "Tran D", 32000);
+    kesach.Push(b1); kesach.Push(b2); kesach.Push(b3); kesach.Push(b4);
+
+    /*Stack st = new Stack();
+    Stack<int> st2 = new Stack<int>();
+    Queue q = new Queue();
+    Queue<int> q2 = new Queue<int>();*/
+    
+    /*MyStack ms = new MyStack();
     ms.Push(1);
     ms.Push(9);
     ms.Push(3);
-    ms.Push(5);
+    ms.Push(5);*/
     System.Console.WriteLine(ms.Peek(2));
     /*System.Console.WriteLine(FindMaxStack(ms));
     System.Console.WriteLine(ms.IsEmpty());*/
