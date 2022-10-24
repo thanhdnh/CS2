@@ -124,10 +124,32 @@ public class Program
     }
   }
   static void PrintCurrentBook(Stack<Book> l, string id){
-
+    Stack<Book> temp = new Stack<Book>();
+    while(l.Count!=0){
+      Book b = l.Pop();
+      temp.Push(b);
+      if(b.id.Equals(id)){
+        System.Console.WriteLine(b);
+        break;
+      }
+    }
+    while(temp.Count!=0)
+      l.Push(temp.Pop());
   }
   static void PrintNextBook(Stack<Book> l, string id){
-
+    Stack<Book> temp = new Stack<Book>();
+    while(l.Count!=0){
+      Book b = l.Pop();
+      temp.Push(b);
+      if(b.id.Equals(id)){
+        Book bb = l.Pop();
+        temp.Push(bb);
+        System.Console.WriteLine(bb);
+        break;
+      }
+    }
+    while(temp.Count!=0)
+      l.Push(temp.Pop());
   }
   public static void Main()
   {
@@ -139,7 +161,9 @@ public class Program
     Book b3 = new Book("B03", "Kinh te", "Ngo C", 23000);
     Book b4 = new Book("B04", "Khoa hoc du lieu", "Tran D", 32000);
     kesach.Push(b1); kesach.Push(b2); kesach.Push(b3); kesach.Push(b4);
-
+    PrintCurrentBook(kesach, "B02");
+    PrintNextBook(kesach, "B02");
+    
     /*Stack st = new Stack();
     Stack<int> st2 = new Stack<int>();
     Queue q = new Queue();
@@ -149,8 +173,8 @@ public class Program
     ms.Push(1);
     ms.Push(9);
     ms.Push(3);
-    ms.Push(5);*/
-    System.Console.WriteLine(ms.Peek(2));
+    ms.Push(5);
+    System.Console.WriteLine(ms.Peek(2));*/
     /*System.Console.WriteLine(FindMaxStack(ms));
     System.Console.WriteLine(ms.IsEmpty());*/
     /*ms.Pop();
