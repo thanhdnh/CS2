@@ -79,6 +79,13 @@ public class Program
     ms.Pop();
     ms.Pop();
 
+    MyQueue mq = new MyQueue();
+    mq.Enqueue(1);
+    mq.Enqueue(2);
+    mq.Enqueue(3);
+    mq.Dequeue();
+    mq.Dequeue();
+
     Console.ReadLine();
   }
 }
