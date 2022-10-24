@@ -28,6 +28,19 @@ public class Program
       top = top.next;
       return d;
     }
+    public object Peek(int index){
+      MyStack temp = new MyStack();
+      object data = 0;
+      int i = -1;
+      do{
+        data = Pop().data;
+        temp.Push(data);
+        i++;
+      }while(i!=index);
+      while(!temp.IsEmpty())
+        Push(temp.Pop().data);
+      return data;
+    }
   }
   public class Node2
   {
@@ -66,17 +79,47 @@ public class Program
       return d;
     }
   }
+  static int SumStack(MyStack ms){
+    int sum = 0;
+    MyStack temp = new MyStack();
+    while(!ms.IsEmpty()){
+      int t = (int)ms.Pop().data;
+      sum += t;
+      temp.Push(t);
+    }
+    while(!temp.IsEmpty())
+      ms.Push((int)temp.Pop().data);
+    return sum;
+  }
+  /*static int SumQueue(in MyQueue mq){
 
+  }*/
+  static int FindMaxStack(MyStack ms){
+    int max = (int)ms.Pop().data;
+    MyStack temp = new MyStack();
+    while(!ms.IsEmpty()){
+      int t = (int)ms.Pop().data;
+      temp.Push(t);
+      if(max<t)
+        max = t;
+    }
+    while(!temp.IsEmpty())
+      ms.Push((int)temp.Pop().data);
+    return max;
+  }
   public static void Main()
   {
     Console.Clear();
 
     MyStack ms = new MyStack();
     ms.Push(1);
-    ms.Push(2);
+    ms.Push(9);
     ms.Push(3);
-
-    ms.Pop();
+    ms.Push(5);
+    System.Console.WriteLine(ms.Peek(2));
+    /*System.Console.WriteLine(FindMaxStack(ms));
+    System.Console.WriteLine(ms.IsEmpty());*/
+    /*ms.Pop();
     ms.Pop();
 
     MyQueue mq = new MyQueue();
@@ -84,7 +127,7 @@ public class Program
     mq.Enqueue(2);
     mq.Enqueue(3);
     mq.Dequeue();
-    mq.Dequeue();
+    mq.Dequeue();*/
 
     Console.ReadLine();
   }
