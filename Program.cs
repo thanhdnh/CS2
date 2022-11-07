@@ -102,6 +102,16 @@ public class Program
       }
       return max;
     }
+    public float CalcAverage(){
+      Node current = header.link;
+      int count = 1, sum = int.Parse(current.element.ToString());
+      while(current.link != null){
+        current = current.link;
+        count++;
+        sum += int.Parse(current.element.ToString());
+      }
+      return (float)sum/count;
+    }
   }
 
   public class Node2
@@ -184,11 +194,12 @@ public class Program
     list.InsertFirst("13");
     list.InsertLast("11");
     list.InsertBefore("15", "11");
-    list.InsertFirst(27);
-    list.InsertLast(25);
+    list.InsertFirst("27");
+    list.InsertLast("25");
     list.Print();
     System.Console.WriteLine("Max of LL: " + list.FindMax());
-
+    System.Console.WriteLine("Avg of LL: " + list.CalcAverage());
+    
 
     Console.ReadLine();
   }
