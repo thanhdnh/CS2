@@ -185,11 +185,22 @@ public class Program
         current = current.blink;
       }
     }
+    public int FindMax(){
+      Node2 current = header.flink;
+      int max = int.Parse(current.element.ToString());
+
+      while(current != null){
+        if(int.Parse(current.element.ToString()) > max) 
+          max = int.Parse(current.element.ToString());
+        current = current.flink;
+      }
+      return max;
+    }
   }
   static void Main()
   {
     Console.Clear();
-    LinkedList list = new LinkedList();
+    /*LinkedList list = new LinkedList();
     list.Insert("1", "Header");
     list.InsertFirst("13");
     list.InsertLast("11");
@@ -198,8 +209,12 @@ public class Program
     list.InsertLast("25");
     list.Print();
     System.Console.WriteLine("Max of LL: " + list.FindMax());
-    System.Console.WriteLine("Avg of LL: " + list.CalcAverage());
-    
+    System.Console.WriteLine("Avg of LL: " + list.CalcAverage());*/
+    DoubleLinkedList dlist = new DoubleLinkedList();
+    dlist.Insert("62", "Header");
+    dlist.Insert("23", "62");
+    dlist.Insert("55", "23");
+    Console.WriteLine("Max of LL: " + dlist.FindMax());
 
     Console.ReadLine();
   }
