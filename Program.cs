@@ -63,6 +63,45 @@ public class Program
         current = current.link;
       }
     }
+    public void InsertFirst(object newelement)
+    {
+      Node newnode = new Node(newelement);
+      newnode.link = header.link;
+      header.link = newnode;
+    }
+    public void InsertLast(object newelement)
+    {
+      Node newNode = new Node();
+      Node current = header;
+      newNode.element = newelement;
+      while (current.link != null)
+      {
+        current = current.link;
+      }
+      current.link = newNode;
+
+    }
+    public void InsertBefore(object newelement, object beforeelement)
+    {
+      Node newnode = new Node(newelement);
+      Node current = header;
+      while (current.link.element != beforeelement)
+        current = current.link;
+      newnode.link = current.link;
+      current.link = newnode;
+    }
+    public int FindMax()
+    {
+      Node current = header.link;
+      int max = int.Parse(current.element.ToString());
+      while (current.link != null)
+      {
+        current = current.link;
+        if (max < int.Parse(current.element.ToString()))
+          max = int.Parse(current.element.ToString());
+      }
+      return max;
+    }
   }
 
   public class Node2
@@ -140,8 +179,16 @@ public class Program
   static void Main()
   {
     Console.Clear();
+    LinkedList list = new LinkedList();
+    list.Insert("1", "Header");
+    list.InsertFirst("13");
+    list.InsertLast("11");
+    list.InsertBefore("15", "11");
+    list.InsertFirst(27);
+    list.InsertLast(25);
+    list.Print();
+    System.Console.WriteLine("Max of LL: " + list.FindMax());
 
-    
 
     Console.ReadLine();
   }
