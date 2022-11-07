@@ -210,11 +210,22 @@ public class Program
     list.Print();
     System.Console.WriteLine("Max of LL: " + list.FindMax());
     System.Console.WriteLine("Avg of LL: " + list.CalcAverage());*/
-    DoubleLinkedList dlist = new DoubleLinkedList();
+    /*DoubleLinkedList dlist = new DoubleLinkedList();
     dlist.Insert("62", "Header");
     dlist.Insert("23", "62");
     dlist.Insert("55", "23");
-    Console.WriteLine("Max of LL: " + dlist.FindMax());
+    Console.WriteLine("Max of LL: " + dlist.FindMax());*/
+    LinkedListNode<int> node0 = new LinkedListNode<int>(25);
+    LinkedListNode<int> node1 = new LinkedListNode<int>(33);
+    LinkedListNode<int> node2 = new LinkedListNode<int>(11);
+    LinkedListNode<int> node3 = new LinkedListNode<int>(7);
+    LinkedList<int> llist = new LinkedList<int>();
+    llist.AddFirst(node0);
+    llist.AddLast(node1);
+    llist.AddBefore(node1, node2);
+    llist.AddAfter(node2, node3);
+    foreach(int v in llist)
+      System.Console.Write(v + " ");
 
     Console.ReadLine();
   }
