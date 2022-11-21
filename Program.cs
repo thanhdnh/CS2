@@ -17,15 +17,22 @@ public class Program
     while(e.MoveNext())
       System.Console.WriteLine("{0}=>{1}", e.Key, e.Value);*/
 
-    Dictionary<string, Account> dicnet = new Dictionary<string, Account>();
+    /*Dictionary<string, Account> dicnet = new Dictionary<string, Account>();
     dicnet.Add(acc1.Email, acc1);
     dicnet.Add(acc2.Email, acc2);
     dicnet.Add(acc3.Email, acc3);
     foreach(KeyValuePair<string, Account> kvp in dicnet)
-      System.Console.WriteLine("{0}=>{1}", kvp.Key, kvp.Value);
+      System.Console.WriteLine("{0}=>{1}", kvp.Key, kvp.Value);*/
     /*IDictionaryEnumerator e = dicnet.GetEnumerator();
     while(e.MoveNext())
       System.Console.WriteLine("{0}=>{1}", e.Key, e.Value);*/
+    
+    SortedDictionary<string, Account> sdict = new SortedDictionary<string, Account>();
+    sdict.Add(acc2.Email, acc2);
+    sdict.Add(acc3.Email, acc3);
+    sdict.Add(acc1.Email, acc1);
+    foreach(KeyValuePair<string, Account> kvp in sdict)
+      System.Console.WriteLine("{0}=>{1}", kvp.Key, kvp.Value);
 
     Console.ReadLine();
   }
