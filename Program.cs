@@ -1,231 +1,166 @@
-﻿using System;
-using System.Collections.Generic;
-public class Program
+﻿public class Program
 {
   public class Node
   {
-    public object element;
-    public Node link;
-    public Node()
-    {
-      element = null;
-      link = null;
-    }
-    public Node(object element)
-    {
-      this.element = element;
-      link = null;
-    }
+    public Node LeftNode { get; set; }
+    public Node RightNode { get; set; }
+    public int Data { get; set; }
   }
-  public class LinkedList
+  public class BinarySearchTree
   {
-    public Node header;
-    public LinkedList()
+    public Node Root { get; set; }
+    public bool Insert(int value)
     {
-      header = new Node("Header");
-    }
-    private Node Find(object element)
-    {
-      Node current = new Node();
-      current = header;
-      while (current.element != element)
-        current = current.link;
-      return current;
-    }
-    public void Insert(object newelement, object afterelement)
-    {
-      Node current = new Node();
-      Node newnode = new Node(newelement);
-      current = Find(afterelement);
-      newnode.link = current.link;
-      current.link = newnode;
-    }
-    public Node FindPrev(object element)
-    {
-      Node current = header;
-      while (current.link != null && current.link.element != element)
-        current = current.link;
-      return current;
-    }
-    public void Remove(object element)
-    {
-      Node current = FindPrev(element);
-      if (current.link != null)
-        current.link = current.link.link;
-    }
-    public void Print()
-    {
-      Node current = new Node();
-      current = header;
-      while (current.link != null)
+      Node before = null, after = this.Root;
+      while (after != null)
       {
-        Console.WriteLine(current.link.element);
-        current = current.link;
+        before = after;
+        if (value < after.Data)
+          after = after.LeftNode;
+        else if (value > after.Data)
+          after = after.RightNode;
+        else
+          return false;
       }
-    }
-    public void InsertFirst(object newelement)
-    {
-      Node newnode = new Node(newelement);
-      newnode.link = header.link;
-      header.link = newnode;
-    }
-    public void InsertLast(object newelement)
-    {
       Node newNode = new Node();
-      Node current = header;
-      newNode.element = newelement;
-      while (current.link != null)
+      newNode.Data = value;
+      if (this.Root == null)
+        this.Root = newNode;
+      else
       {
-        current = current.link;
+        if (value < before.Data)
+          before.LeftNode = newNode;
+        else
+          before.RightNode = newNode;
       }
-      current.link = newNode;
-
+      return true;
     }
-    public void InsertBefore(object newelement, object beforeelement)
+    public void TraverseInOrder(Node parent)
     {
-      Node newnode = new Node(newelement);
-      Node current = header;
-      while (current.link.element != beforeelement)
-        current = current.link;
-      newnode.link = current.link;
-      current.link = newnode;
+      if (parent != null)
+      {
+        TraverseInOrder(parent.LeftNode);
+        Console.Write(parent.Data + " ");
+        TraverseInOrder(parent.RightNode);
+      }
+    }
+    public void TraversePreOrder(Node parent)
+    {
+      if (parent != null)
+      {
+        Console.Write(parent.Data + " ");
+        TraversePreOrder(parent.LeftNode);
+        TraversePreOrder(parent.RightNode);
+      }
+    }
+    public void TraversePostOrder(Node parent)
+    {
+      if (parent != null)
+      {
+        TraversePostOrder(parent.LeftNode);
+        TraversePostOrder(parent.RightNode);
+        Console.Write(parent.Data + " ");
+      }
+    }
+    private int MinValueOfNode(Node node)
+    {
+      int minv = node.Data;
+      while (node.LeftNode != null)
+      {
+        minv = node.LeftNode.Data;
+        node = node.LeftNode;
+      }
+      return minv;
+    }
+    public int FindMin()
+    {
+      return MinValueOfNode(this.Root);
+    }
+    public int FindMin2()
+    {
+      Node current = Root;
+      while (current.LeftNode != null)
+        current = current.LeftNode;
+      return current.Data;
+    }
+    private int MaxValueOfNode(Node node)
+    {
+      int maxv = node.Data;
+      while (node.RightNode != null)
+      {
+        maxv = node.RightNode.Data;
+        node = node.RightNode;
+      }
+      return maxv;
     }
     public int FindMax()
     {
-      Node current = header.link;
-      int max = int.Parse(current.element.ToString());
-      while (current.link != null)
+      return MaxValueOfNode(this.Root);
+    }
+    public int FindMax2()
+    {
+      Node current = Root;
+      while (current.RightNode != null)
+        current = current.RightNode;
+      return current.Data;
+    }
+    public int GetTreeDepth()
+    {
+      return this.GetTreeDepth(this.Root);
+    }
+    private int GetTreeDepth(Node parent)
+    {
+      return parent == null ? 0 : Math.Max(GetTreeDepth(parent.LeftNode), GetTreeDepth(parent.RightNode)) + 1;
+    }
+    public Node Find(int value)
+    { return this.Find(value, this.Root); }
+    private Node Find(int value, Node parent)
+    {
+      if (parent != null)
       {
-        current = current.link;
-        if (max < int.Parse(current.element.ToString()))
-          max = int.Parse(current.element.ToString());
+        if (value == parent.Data) return parent;
+        if (value < parent.Data)
+          return Find(value, parent.LeftNode);
+        else
+          return Find(value, parent.RightNode);
       }
-      return max;
+      return null;
     }
-    public float CalcAverage(){
-      Node current = header.link;
-      int count = 1, sum = int.Parse(current.element.ToString());
-      while(current.link != null){
-        current = current.link;
-        count++;
-        sum += int.Parse(current.element.ToString());
+    public void Remove(int value)
+    { this.Root = Remove(this.Root, value); }
+    private Node Remove(Node parent, int key)
+    {
+      if (parent == null) return parent;
+      if (key < parent.Data) parent.LeftNode = Remove(parent.LeftNode, key);
+      else if (key > parent.Data) parent.RightNode = Remove(parent.RightNode, key);
+      else
+      {
+        if (parent.LeftNode == null) return parent.RightNode;
+        else if (parent.RightNode == null) return parent.LeftNode;
+        parent.Data = MinValueOfNode(parent.RightNode);
+        parent.RightNode = Remove(parent.RightNode, parent.Data);
       }
-      return (float)sum/count;
+      return parent;
     }
-  }
 
-  public class Node2
-  {
-    public object element;
-    public Node2 flink, blink;
-    public Node2()
-    {
-      element = null;
-      flink = blink = null;
-    }
-    public Node2(object element)
-    {
-      this.element = element;
-      flink = blink = null;
-    }
-  }
-
-  public class DoubleLinkedList
-  {
-    public Node2 header;
-    public DoubleLinkedList()
-    {
-      header = new Node2("Header");
-    }
-    private Node2 Find(object element)
-    {
-      Node2 current = new Node2();
-      current = header;
-      while (current.element != element)
-      {
-        current = current.flink;
-      }
-      return current;
-    }
-    public void Insert(object newelement, object afterelement)
-    {
-      Node2 current = new Node2();
-      Node2 newnode = new Node2(newelement);
-      current = Find(afterelement);
-      newnode.flink = current.flink;
-      newnode.blink = current;
-      current.flink = newnode;
-    }
-    public void Remove(object element)
-    {
-      Node2 current = Find(element);
-      if (current.flink != null)
-      {
-        current.blink.flink = current.flink;
-        current.flink.blink = current.blink;
-        current.flink = null;
-        current.blink = null;
-      }
-    }
-    private Node2 FindLast()
-    {
-      Node2 current = new Node2();
-      current = header;
-      while (!(current.flink == null))
-        current = current.flink;
-      return current;
-    }
-    public void Print()
-    {
-      Node2 current = new Node2();
-      current = FindLast();
-      while (!(current.blink == null))
-      {
-        Console.WriteLine(current.element);
-        current = current.blink;
-      }
-    }
-    public int FindMax(){
-      Node2 current = header.flink;
-      int max = int.Parse(current.element.ToString());
-
-      while(current != null){
-        if(int.Parse(current.element.ToString()) > max) 
-          max = int.Parse(current.element.ToString());
-        current = current.flink;
-      }
-      return max;
-    }
   }
   static void Main()
   {
     Console.Clear();
-    /*LinkedList list = new LinkedList();
-    list.Insert("1", "Header");
-    list.InsertFirst("13");
-    list.InsertLast("11");
-    list.InsertBefore("15", "11");
-    list.InsertFirst("27");
-    list.InsertLast("25");
-    list.Print();
-    System.Console.WriteLine("Max of LL: " + list.FindMax());
-    System.Console.WriteLine("Avg of LL: " + list.CalcAverage());*/
-    /*DoubleLinkedList dlist = new DoubleLinkedList();
-    dlist.Insert("62", "Header");
-    dlist.Insert("23", "62");
-    dlist.Insert("55", "23");
-    Console.WriteLine("Max of LL: " + dlist.FindMax());*/
-    LinkedListNode<int> node0 = new LinkedListNode<int>(25);
-    LinkedListNode<int> node1 = new LinkedListNode<int>(33);
-    LinkedListNode<int> node2 = new LinkedListNode<int>(11);
-    LinkedListNode<int> node3 = new LinkedListNode<int>(7);
-    LinkedList<int> llist = new LinkedList<int>();
-    llist.AddFirst(node0);
-    llist.AddLast(node1);
-    llist.AddBefore(node1, node2);
-    llist.AddAfter(node2, node3);
-    foreach(int v in llist)
-      System.Console.Write(v + " ");
+
+    BinarySearchTree binaryTree = new BinarySearchTree();
+    binaryTree.Insert(23); binaryTree.Insert(16); binaryTree.Insert(45); binaryTree.Insert(3);
+    binaryTree.Insert(22); binaryTree.Insert(37); binaryTree.Insert(99);
+    Console.WriteLine(">> Max:" + binaryTree.FindMax());  //hoặc dùng binaryTree.FindMax2()   
+    Console.WriteLine(">> Min:" + binaryTree.FindMin());  //hoặc dùng binaryTree.FindMin2()
+    Node node = binaryTree.Find(5);
+    int depth = binaryTree.GetTreeDepth();
+    Console.WriteLine(">> PreOrder Traversal:"); binaryTree.TraversePreOrder(binaryTree.Root);
+    Console.WriteLine("\n>> InOrder Traversal:"); binaryTree.TraverseInOrder(binaryTree.Root);
+    Console.WriteLine("\n>> PostOrder Traversal:"); binaryTree.TraversePostOrder(binaryTree.Root);
+    binaryTree.Remove(7); binaryTree.Remove(8);
+    Console.WriteLine("\n>> PreOrder After Removing Operation:");
+    binaryTree.TraversePreOrder(binaryTree.Root);
 
     Console.ReadLine();
   }
