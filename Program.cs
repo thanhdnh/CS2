@@ -9,8 +9,10 @@
   public class BinarySearchTree
   {
     public Node Root { get; set; }
+    public int CountNode = 0;//
     public bool Insert(int value)
     {
+      CountNode++;
       Node before = null, after = this.Root;
       while (after != null)
       {
@@ -127,7 +129,10 @@
       return null;
     }
     public void Remove(int value)
-    { this.Root = Remove(this.Root, value); }
+    { 
+      CountNode--;
+      this.Root = Remove(this.Root, value); 
+    }
     private Node Remove(Node parent, int key)
     {
       if (parent == null) return parent;
@@ -142,7 +147,39 @@
       }
       return parent;
     }
-
+    public int Count(){
+      return Count(Root);
+    }
+    public int Count(Node parent){
+      if ( parent == null)
+       return 0;
+      else
+       return Count(parent.LeftNode) + Count(parent.RightNode) + 1;  
+    }
+    public void Count2(Node parent, ref int count){
+      if (parent != null)
+      {
+        Count2(parent.LeftNode, ref count);
+        count++;
+        Count2(parent.RightNode, ref count);
+      }
+    }
+    public int Sum(){
+      return Sum(Root);
+    }
+    public int Sum(Node parent){
+      if(parent==null)
+        return 0;
+      else
+        return Sum(parent.LeftNode) + Sum(parent.RightNode) + parent.Data;
+    }
+    public void Sum2(Node parent, ref int sum){
+      if(parent!=null){
+        Sum2(parent.LeftNode, ref sum);
+        sum = sum + parent.Data;
+        Sum2(parent.RightNode, ref sum);
+      }
+    }
   }
   static void Main()
   {
@@ -166,6 +203,17 @@
     binaryTree.Remove(37); binaryTree.Remove(3);
     Console.WriteLine("\n>> PreOrder After Removing Operation:");
     binaryTree.TraversePreOrder(binaryTree.Root);
+
+    Console.WriteLine("\n>> Count1: "+ binaryTree.Count());
+    int count = 0;
+    binaryTree.Count2(binaryTree.Root, ref count);
+    Console.WriteLine("\n>> Count2: " + count);
+    Console.WriteLine("\n>> Count3: "+ binaryTree.CountNode);
+
+    Console.WriteLine("\n>> Sum: " + binaryTree.Sum());
+    int sum = 0;
+    binaryTree.Sum2(binaryTree.Root, ref sum);
+    Console.WriteLine("\n>> Sum: " + sum);
 
     Console.ReadLine();
   }
