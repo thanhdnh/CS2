@@ -163,9 +163,9 @@
     Console.WriteLine(">> PreOrder Traversal:"); binaryTree.TraversePreOrder(binaryTree.Root);
     Console.WriteLine("\n>> InOrder Traversal:"); binaryTree.TraverseInOrder(binaryTree.Root);
     Console.WriteLine("\n>> PostOrder Traversal:"); binaryTree.TraversePostOrder(binaryTree.Root);
-    /*binaryTree.Remove(7); binaryTree.Remove(8);
+    binaryTree.Remove(37); binaryTree.Remove(3);
     Console.WriteLine("\n>> PreOrder After Removing Operation:");
-    binaryTree.TraversePreOrder(binaryTree.Root);*/
+    binaryTree.TraversePreOrder(binaryTree.Root);
 
     Console.ReadLine();
   }
