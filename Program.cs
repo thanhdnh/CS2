@@ -54,7 +54,7 @@ class Program
         }*/
 
         //Bai 12. Kiem tra loai tam giac
-        Console.Write("Nhap vao canh a:");
+        /*Console.Write("Nhap vao canh a:");
         float a = float.Parse(Console.ReadLine());
         Console.Write("Nhap vao canh b:");
         float b = float.Parse(Console.ReadLine());
@@ -78,7 +78,57 @@ class Program
             }
         }else
             System.Console.WriteLine("Khong phai la 3 canh TG");
+        */
+
+        //Bai 15. Kiem tra nguyen am/phu am
+        /*char ch = Console.ReadKey().KeyChar;
+        Console.WriteLine("\n----");
+        switch(ch){
+                case 'e': case 'u': case 'o': case 'a': case 'i': 
+                        Console.WriteLine("{0} la nguyen am", ch);
+                        break;
+                case 'q': case 'w': case 'r': case 't': case 'y':
+                case 'p': case 's': case 'd': case 'f': case 'g':
+                case 'h': case 'j': case 'k': case 'l': case 'z':
+                case 'x': case 'c': case 'v': case 'b': case 'n':
+                case 'm':
+                        Console.WriteLine("{0} la phu am", ch);
+                        break;
+                default:
+                        System.Console.WriteLine("{0} khong la nguyen/phu am", ch);
+                        break;
+        }*/
+
+        //Bai 21. Tao menu tinh dien tich cac hinh: t, c, g
+        LapLai:
+        System.Console.WriteLine("Nhap vao ki tu [t=Tinh DTHT, c=Tinh DTHCN, g=Tinh DTHTG, x=Thoat]");
+        char luachon = Console.ReadKey().KeyChar;
+        switch(luachon){
+                case 't':
+                        //tinh dien tich hinh tron
+                        Console.Clear();
+                        System.Console.WriteLine("\nDien tich HT");
+                        goto LapLai;
+                case 'c':
+                        //tinh dien tich hcn
+                        Console.Clear();
+                        System.Console.WriteLine("\nDien tich HCN");
+                        goto LapLai;
+                case 'g':
+                        //tinh dien tich hinh tg
+                        Console.Clear();
+                        System.Console.WriteLine("\nDien tich TG");
+                        goto LapLai;
+                case 'x':
+                        //Thoat
+                        Console.Clear();
+                        System.Console.WriteLine("\nThoat...");
+                        return;
+                default:
+                        //quay lai menu
+                        goto LapLai;
+        }
+
         Console.ReadKey();
-        
     }
 }
