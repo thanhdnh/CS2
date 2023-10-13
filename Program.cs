@@ -66,6 +66,37 @@ class Program
                 while (i <= n);
                 Console.WriteLine("do...while: S2 = " + sum2);
 
+                //=============Kiem tra so nguyen to
+                bool nt = true;
+                if(n==2)
+                        nt = true;
+                else
+                        for(i=2; i<=Math.Sqrt(n); i++)
+                                if(n%i==0){
+                                        nt = false;
+                                        break;
+                                }else
+                                        nt = nt && true;
+                if(nt)
+                        System.Console.WriteLine("{0} la NT", n);
+                else
+                        System.Console.WriteLine("{0} khong la NT", n);
+                
+                //=======Tong S=9+99+...+999...9
+                //C1. Cong xau
+                string s = "";
+                ulong S1 = 0;
+                for(i=1; i<=n; i++){
+                        s+="9";
+                        S1+=ulong.Parse(s);
+                        //System.Console.WriteLine(s);
+                }
+                System.Console.WriteLine(S1);
+
+                //C2. 999=10^3-1
+                //C3. 999=9*10^2+9*10^1+9*10^0
+                //C4. Dung log
+                
                 Console.ReadKey();
         }
 }
