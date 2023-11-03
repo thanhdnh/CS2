@@ -1,7 +1,21 @@
 using System;
-using System.Security.Cryptography.X509Certificates;
 class Program
 {
+    static void GenerateMatrix(int[,] a, int d1, int d2){
+        a = new int[d1, d2];
+        Random r = new Random();
+        for(int i=0; i<d1; i++)
+            for(int j=0; j<d2; j++){
+                a[i,j] = r.Next();
+            }
+    }
+    static void PrintMatrix(int[,] a){
+        
+    }
+
+    static int[,] SumMatrices(int[,] a, int[,] b){
+
+    }
     static bool KTDXMang(int[] a){
         for(int i=0; i<a.Length/2; i++){
             if(a[i]!=a[a.Length-i-1])
