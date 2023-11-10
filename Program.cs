@@ -15,12 +15,12 @@ class Program
     {
         long luong = (long)((float)nv[1]*1500000+(int)nv[2]*7);
         string result = "";
-        result += "BẢNG LƯƠNG\n======\n\n";
+        result += "BẢNG LƯƠNG\n======\n";
         result += $"Bảng lương cấp cho nhân viên [{nv[0]}],";
         result += $"hệ số lương [{nv[1]}], phụ cấp [{nv[2]}]/ngày.";
-        result += $"Lương thực nhận: {luong} VNĐ";
-        result += "T.P. Tài chính";
-        result += "(Đã ký)";
+        result += $"\nLương thực nhận: {luong} VNĐ";
+        result += "\nT.P. Tài chính";
+        result += "\n(Đã ký)";
         return result;
     }
     static void NhapTTCacNV(object[][] nvs){
