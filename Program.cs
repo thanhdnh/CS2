@@ -56,7 +56,15 @@ class Program
     }
     static object[][] LocNVTheoLuong(object[][] nvs, 
                                     long f, long t){
-
+        int count = DemNVTheoLuong(nvs, f, t);
+        object[][] result = KhoiTaoMangNV(count);
+        int index = 0;
+        for(int i=0; i<nvs.Length; i++)
+            if(TinhLuong(nvs[i])>=f && 
+                TinhLuong(nvs[i])<=t){
+                    result[index++] = nvs[i];
+                }
+        return result;
     }
     public static void Main(string[] args)
     {
@@ -67,6 +75,10 @@ class Program
         object[][] nvs = KhoiTaoMangNV(3);
         NhapTTCacNV(nvs);
         Console.WriteLine(XuatTTCacNV(nvs));
+        
+        Console.WriteLine("\nNhân viên lương từ 5tr-7tr:");
+        Console.WriteLine(XuatTTCacNV(LocNVTheoLuong(nvs,
+         5000000, 7000000)));
 
         Console.ReadLine();
     }
