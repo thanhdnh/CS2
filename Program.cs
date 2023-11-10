@@ -18,14 +18,14 @@ class Program
     static string XuatTT1NV(object[] nv)
     {
         string result = "";
-        result += "\t\t\tBẢNG LƯƠNG\n\t\t\t======\n";
+        result += "\t\tBẢNG LƯƠNG\n\t\t======\n";
         result += "Bảng lương cấp cho nhân viên:\n";
         result += $" + Họ tên: [{nv[0]}],\n";
         result += $" + Hệ số lương [{nv[1]}],\n";
         result += $" + Phụ cấp [{nv[2]}] VNĐ/ngày.";
         result += $"\nLương thực nhận: {TinhLuong(nv)} VNĐ";
-        result += "\n\t\t\tT.P. Tài chính";
-        result += "\n\t\t\t(Đã ký)";
+        result += "\n\t\tT.P. Tài chính";
+        result += "\n\t\t(Đã ký)";
         return result;
     }
     static void NhapTTCacNV(object[][] nvs){
