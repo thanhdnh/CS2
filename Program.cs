@@ -18,7 +18,7 @@ class Program
     static string XuatTT1NV(object[] nv)
     {
         string result = "";
-        result += "\t\t\tBẢNG LƯƠNG\n======\n";
+        result += "\t\t\tBẢNG LƯƠNG\n\t\t\t======\n";
         result += "Bảng lương cấp cho nhân viên:\n";
         result += $" + Họ tên: [{nv[0]}],\n";
         result += $" + Hệ số lương [{nv[1]}],\n";
