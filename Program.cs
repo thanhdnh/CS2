@@ -11,16 +11,18 @@ class Program
         Console.WriteLine(" + Nhập phụ cấp theo ngày: ");
         nv[2] = int.Parse(Console.ReadLine());
     }
+    static long TinhLuong(object[] nv){
+        return (long)((float)nv[1]*1500000+(int)nv[2]*7);
+    }
     static string XuatTT1NV(object[] nv)
     {
-        long luong = (long)((float)nv[1]*1500000+(int)nv[2]*7);
         string result = "";
         result += "\t\t\tBẢNG LƯƠNG\n======\n";
         result += "Bảng lương cấp cho nhân viên:";
         result += $" + Họ tên: [{nv[0]}],\n";
         result += $" + Hệ số lương [{nv[1]}],\n";
         result += $" + Phụ cấp [{nv[2]}] VNĐ/ngày.";
-        result += $"\nLương thực nhận: {luong} VNĐ";
+        result += $"\nLương thực nhận: {TinhLuong(nv)} VNĐ";
         result += "\n\t\t\tT.P. Tài chính";
         result += "\n\t\t\t(Đã ký)";
         return result;
@@ -42,6 +44,19 @@ class Program
         for(int i=0; i<nvs.Length; i++)
             nvs[i] = new object[3];
         return nvs;
+    }
+    static int DemNVTheoLuong(object[][] nvs, 
+                                long f, long t){
+        int count = 0;
+        for(int i=0; i<nvs.Length; i++)
+            if(TinhLuong(nvs[i])>=f && 
+                            TinhLuong(nvs[i])<=t)
+                count++;
+        return count;
+    }
+    static object[][] LocNVTheoLuong(object[][] nvs, 
+                                    long f, long t){
+
     }
     public static void Main(string[] args)
     {
