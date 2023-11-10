@@ -13,7 +13,15 @@ class Program
     }
     static string XuatTT1NV(object[] nv)
     {
-        return $"Nhân viên: {nv[0]}, Hệ số lương: {nv[1]}, Phụ cấp ngày: {nv[2]}";
+        long luong = (long)((float)nv[1]*1500000+(int)nv[2]*7);
+        string result = "";
+        result += "BẢNG LƯƠNG\n======\n\n";
+        result += $"Bảng lương cấp cho nhân viên [{nv[0]}],";
+        result += $"hệ số lương [{nv[1]}], phụ cấp [{nv[2]}]/ngày.";
+        result += $"Lương thực nhận: {luong} VNĐ";
+        result += "T.P. Tài chính";
+        result += "(Đã ký)";
+        return result;
     }
     static void NhapTTCacNV(object[][] nvs){
         for(int i=0; i<nvs.Length; i++){
