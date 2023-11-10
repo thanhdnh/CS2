@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System;
 
 class Program
 {
@@ -45,23 +46,19 @@ class Program
             nvs[i] = new object[3];
         return nvs;
     }
-    static int DemNVTheoLuong(object[][] nvs, 
-                                long f, long t){
+    static int DemNVTheoLuong(object[][] nvs, long f, long t){
         int count = 0;
         for(int i=0; i<nvs.Length; i++)
-            if(TinhLuong(nvs[i])>=f && 
-                            TinhLuong(nvs[i])<=t)
+            if(TinhLuong(nvs[i])>=f && TinhLuong(nvs[i])<=t)
                 count++;
         return count;
     }
-    static object[][] LocNVTheoLuong(object[][] nvs, 
-                                    long f, long t){
+    static object[][] LocNVTheoLuong(object[][] nvs, long f, long t){
         int count = DemNVTheoLuong(nvs, f, t);
         object[][] result = KhoiTaoMangNV(count);
         int index = 0;
         for(int i=0; i<nvs.Length; i++)
-            if(TinhLuong(nvs[i])>=f && 
-                TinhLuong(nvs[i])<=t){
+            if(TinhLuong(nvs[i])>=f && TinhLuong(nvs[i])<=t){
                     result[index++] = nvs[i];
                 }
         return result;
@@ -75,10 +72,9 @@ class Program
         object[][] nvs = KhoiTaoMangNV(3);
         NhapTTCacNV(nvs);
         Console.WriteLine(XuatTTCacNV(nvs));
-        
+
         Console.WriteLine("\nNhân viên lương từ 5tr-7tr:");
-        Console.WriteLine(XuatTTCacNV(LocNVTheoLuong(nvs,
-         5000000, 7000000)));
+        Console.WriteLine(XuatTTCacNV(LocNVTheoLuong(nvs, 5000000, 7000000)));
 
         Console.ReadLine();
     }
