@@ -1,0 +1,15 @@
+/Users/hoangthanh/CS2/obj/Debug/net7.0/CS2.csproj.AssemblyReference.cache
+/Users/hoangthanh/CS2/obj/Debug/net7.0/CS2.GeneratedMSBuildEditorConfig.editorconfig
+/Users/hoangthanh/CS2/obj/Debug/net7.0/CS2.AssemblyInfoInputs.cache
+/Users/hoangthanh/CS2/obj/Debug/net7.0/CS2.AssemblyInfo.cs
+/Users/hoangthanh/CS2/obj/Debug/net7.0/CS2.csproj.CoreCompileInputs.cache
+/Users/hoangthanh/CS2/bin/Debug/net7.0/CS2
+/Users/hoangthanh/CS2/bin/Debug/net7.0/CS2.deps.json
+/Users/hoangthanh/CS2/bin/Debug/net7.0/CS2.runtimeconfig.json
+/Users/hoangthanh/CS2/bin/Debug/net7.0/CS2.dll
+/Users/hoangthanh/CS2/bin/Debug/net7.0/CS2.pdb
+/Users/hoangthanh/CS2/obj/Debug/net7.0/CS2.dll
+/Users/hoangthanh/CS2/obj/Debug/net7.0/refint/CS2.dll
+/Users/hoangthanh/CS2/obj/Debug/net7.0/CS2.pdb
+/Users/hoangthanh/CS2/obj/Debug/net7.0/CS2.genruntimeconfig.cache
+/Users/hoangthanh/CS2/obj/Debug/net7.0/ref/CS2.dll
