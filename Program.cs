@@ -19,7 +19,7 @@ class Program
     {
         string result = "";
         result += "\t\t\tBẢNG LƯƠNG\n======\n";
-        result += "Bảng lương cấp cho nhân viên:";
+        result += "Bảng lương cấp cho nhân viên:\n";
         result += $" + Họ tên: [{nv[0]}],\n";
         result += $" + Hệ số lương [{nv[1]}],\n";
         result += $" + Phụ cấp [{nv[2]}] VNĐ/ngày.";
